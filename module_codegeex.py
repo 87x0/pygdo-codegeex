@@ -13,6 +13,12 @@ if TYPE_CHECKING:
 
 class module_codegeex(GDO_Module):
 
+    def gdo_is_site_module(self) -> bool:
+        return True
+
+    def gdo_main_method_name(self) -> str:
+        return 'welcome'
+
     def gdo_classes(self) -> list[type[GDO]]:
         return []
 
@@ -36,4 +42,4 @@ class module_codegeex(GDO_Module):
         self.add_css('css/pygdo-codegeex.css')
 
     def gdo_init_sidebar(self, page: 'GDT_Page'):
-        page._left_bar.add_field(GDT_Link().href(self.href('overview')).text('module_codegeex'))
+        page._left_bar.add_field(GDT_Link().href(self.href('welcome')).text('module_codegeex'))

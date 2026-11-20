@@ -1,4 +1,9 @@
-module_codegeex = "Codegeex"
+module_codegeex = "CodeGeeX"
 
 mt_codegeex_overview = "codegeexs"
 md_codegeex_overview = "Overview of codegeex"
+
+mt_codegeex_welcome = "Welcome"
+md_codegeex_welcome = "Welcome to CodeGeeX"
+codegeex_welcome_title = "Welcome to CodeGeeX"
+codegeex_welcome_text = "Home of Team CGX: X (Pilot) and Khedr (AL #3). Built on PyGDO, by hackers, for learners. Under construction."

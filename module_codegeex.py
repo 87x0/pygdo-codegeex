@@ -16,6 +16,8 @@ class module_codegeex(GDO_Module):
     def gdo_is_site_module(self) -> bool:
         return True
 
+    def gdo_dependencies(self) -> list:
+        return ["mira_challs"]
     def gdo_main_method_name(self) -> str:
         return 'welcome'
 

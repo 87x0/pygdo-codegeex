@@ -21,5 +21,5 @@ Third-party media (not covered by the license above)
   Recording: Kuokka77 (https://www.youtube.com/@Kuokka77)
   Source:    https://www.youtube.com/watch?v=6wHH94I3Qu8
   Music:     Fairlight (Amiga cracktro)
-  Used by:   method $cgx.fairlight, file video/fairlight.mp4
-  The file is not distributed with this repository; all rights stay with their owners.
+  Used by:   method $cgx.fairlight (streams the YouTube URL via $video.media)
+  Not distributed with this repository; all rights stay with their owners.

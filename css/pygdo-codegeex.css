@@ -1,6 +1,6 @@
 /* CGX background relief (Khedr, 2026-11-26): subtle embossed CGX badges behind the whole site */
 body {
-  background-image: url("../img/cgx_relief.svg");
+  background-image: url("/gdo/codegeex/img/cgx_relief.svg");
   background-repeat: repeat;
   background-size: 260px 260px;
   background-attachment: fixed;

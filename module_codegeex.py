@@ -104,7 +104,7 @@ class module_codegeex(GDO_Module):
         cur = Application.get_lang_iso() or 'en'
 
         def keep_lang(u: str) -> str:  # guests keep their chosen language while clicking around
-            if cur == 'en':
+            if cur == 'en' or '_lang=' in u:
                 return u
             return u + ('&' if '?' in u else '?') + f'_lang={cur}'
         nav = ''.join(f'<a href="{escape(keep_lang(u))}">{escape(self.t(k, ()))}</a>' for u, k in links)

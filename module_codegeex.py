@@ -22,7 +22,7 @@ class module_codegeex(GDO_Module):
 
     def gdo_dependencies(self) -> list:
         # mira first: its install sets site config we override below
-        return ["mira", "mira_challs", "websocket", "perf"]
+        return ["mira", "mira_challs", "websocket", "perf", "khedr"]
     def gdo_main_method_name(self) -> str:
         return 'welcome'
 

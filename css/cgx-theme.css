@@ -35,8 +35,13 @@ html body {
   font-size: 15px;
   line-height: 1.6;
 }
-/* relief stays, but faint on the dark ground */
-html body { background-blend-mode: luminosity; }
+/* relief stays, but faint: a dark veil over the CGX badges */
+html body {
+  background-image: linear-gradient(rgba(7,11,7,.86), rgba(7,11,7,.86)), url("/gdo/codegeex/img/cgx_relief.svg");
+  background-repeat: repeat;
+  background-size: auto, 260px 260px;
+  background-attachment: fixed;
+}
 
 html body a, html body a:visited { color: var(--cgx-glow); text-decoration: none; }
 html body a:hover { color: #fff; text-shadow: 0 0 8px var(--cgx-green); }

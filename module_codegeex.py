@@ -59,5 +59,6 @@ class module_codegeex(GDO_Module):
 
     def gdo_init_sidebar(self, page: 'GDT_Page'):
         page._left_bar.add_field(GDT_Link().href(self.href('welcome')).text('module_codegeex'))
+        page._left_bar.add_field(GDT_Link().href(self.href('grid')).text('codegeex_grid_link'))
         page._left_bar.add_field(GDT_Link().href(self.href('map')).text('codegeex_map_link'))
         page._left_bar.add_field(GDT_Link().href('/gdo/codegeex/the_codegeex_almanac/README.md?render_md=1').text('codegeex_almanac'))

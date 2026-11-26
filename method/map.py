@@ -11,7 +11,7 @@ class map(Method):
     v1 shows every realm open; done / you-are-here / locked come with the XP step."""
 
     PER_ROW = 4
-    W, ROW_H, PAD_X, TOP = 1000, 170, 110, 90
+    W, ROW_H, PAD_X, TOP = 1000, 170, 130, 90
 
     @classmethod
     def gdo_trigger(cls) -> str:

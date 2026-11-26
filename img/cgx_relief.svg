@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="260" height="260" viewBox="0 0 260 260">
+  <!-- CGX background relief tile: embossed badge, transparent, works on light + dark themes -->
+  <defs>
+    <g id="badge" font-family="DejaVu Sans Mono,Consolas,monospace" font-weight="700">
+      <rect x="0" y="0" width="120" height="120" rx="24" fill="none" stroke-width="5"/>
+      <text x="60" y="73" font-size="44" text-anchor="middle">CGX</text>
+      <rect x="24" y="92" width="72" height="4"/>
+    </g>
+  </defs>
+  <!-- relief = light edge up-left + dark edge down-right -->
+  <g transform="translate(20 20) rotate(-8 60 60)">
+    <use href="#badge" x="-1.5" y="-1.5" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.06)"/>
+    <use href="#badge" x="1.5" y="1.5" fill="rgba(0,0,0,.10)" stroke="rgba(0,0,0,.10)"/>
+    <use href="#badge" fill="rgba(0,230,90,.05)" stroke="rgba(0,230,90,.05)"/>
+  </g>
+  <g transform="translate(150 150) scale(.55) rotate(8 60 60)">
+    <use href="#badge" x="-1.5" y="-1.5" fill="rgba(255,255,255,.05)" stroke="rgba(255,255,255,.05)"/>
+    <use href="#badge" x="1.5" y="1.5" fill="rgba(0,0,0,.08)" stroke="rgba(0,0,0,.08)"/>
+    <use href="#badge" fill="rgba(0,230,90,.04)" stroke="rgba(0,230,90,.04)"/>
+  </g>
+</svg>

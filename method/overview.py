@@ -1,15 +1,18 @@
 from gdo.base.GDT import GDT
-from gdo.form.GDT_Form import GDT_Form
-from gdo.form.MethodForm import MethodForm
+from gdo.base.Method import Method
+from gdo.ui.GDT_Card import GDT_Card
+from gdo.ui.GDT_Panel import GDT_Panel
 
 
-class overview(MethodForm):
-    def gdo_parameters(self) -> list[GDT]:
-        return []
+class overview(Method):
+    """CodeGeeX - For You! What codegeex.dev wants to be: free online learning material, built from GDTs."""
 
-    def gdo_create_form(self, form: GDT_Form) -> None:
-        super().gdo_create_form(form)
+    SECTIONS = ('what', 'chapters', 'how', 'who')
 
-    def form_submitted(self):
-        return self.msg('%s', 'Yeah!')
-    
+    def gdo_execute(self) -> GDT:
+        card = GDT_Card().title('codegeex_overview_title')
+        card.get_header().add_field(GDT_Panel().text('codegeex_overview_intro'))
+        for key in self.SECTIONS:
+            card.get_content().add_field(
+                GDT_Panel().title(f'codegeex_overview_{key}_title').text(f'codegeex_overview_{key}_text'))
+        return card

@@ -12,7 +12,7 @@ class welcome(Method):
 
     @classmethod
     def gdo_trigger(cls) -> str:
-        return 'welcome'
+        return ''
 
     def gdo_execute(self) -> GDT:
         card = GDT_Card().title('codegeex_welcome_title')

@@ -32,6 +32,9 @@ class module_codegeex(GDO_Module):
     async def gdo_install(self):
         """Site config for codegeex.dev, re-applied on every install so the site can be re-set up in one go.
         Runs after module_mira (dependency), which forces video_stream_sidebar=1."""
+        from gdo.base.Application import Application
+        if Application.config('core.domain') != 'codegeex.dev':
+            return  # only codegeex.dev gets this site config; other servers (e.g. Mogwai) keep theirs
         from gdo.video.module_video import module_video
         from gdo.perf.module_perf import module_perf
         await module_video.instance().save_config_val('video_stream_sidebar', '0')  # no livestream link

@@ -1,0 +1,23 @@
+/* CodeGeeX theme "The Grid" for Markdown previews (README.md?render_md=1). Loaded after core's inline style. */
+:root { color-scheme: dark; }
+html { background: #070b07; }
+body {
+  background: #070b07; color: #e6edf3;
+  font-family: "JetBrains Mono", "DejaVu Sans Mono", Consolas, "Liberation Mono", monospace;
+  font-size: 15px; line-height: 1.7;
+  max-width: 60rem;
+}
+h1, h2, h3, h4 { color: #3dff8f; font-weight: 700; letter-spacing: .02em; }
+h1 { border-bottom: 2px solid #00e65a; text-shadow: 0 0 12px rgba(0,230,90,.35); }
+h2 { border-bottom: 1px solid #1d3a1d; }
+a, a:visited { color: #3dff8f; text-decoration: none; }
+a:hover { color: #fff; text-shadow: 0 0 8px #00e65a; }
+strong { color: #3dff8f; }
+code, pre { background: #040704; color: #3dff8f; border: 1px solid #1d3a1d; border-radius: 6px; }
+pre code { border: 0; }
+blockquote { border-left: 3px solid #00e65a; background: #132013; color: #e6edf3; border-radius: 0 10px 10px 0; padding: .6rem 1rem; }
+th, td { border: 1px solid #1d3a1d; }
+th { color: #7a8f7a; }
+hr { border: 0; border-top: 1px solid #1d3a1d; }
+li::marker { color: #00e65a; }
+::selection { background: #00e65a; color: #041a0b; }

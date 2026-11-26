@@ -122,8 +122,9 @@ class grid(Method):
         return (f'<section class="cgx-box"><h3>{self._t("codegeex_grid_challenges")}</h3>'
                 f'<table class="cgx-table"><thead><tr><th>{self._t("codegeex_grid_col_chall")}</th>'
                 f'<th class="n">{self._t("codegeex_grid_col_score")}</th><th class="n">{self._t("codegeex_grid_col_solvers")}</th></tr></thead>'
-                f'<tbody>{body}</tbody></table><a class="cgx-more" href="{more}">{self._t("codegeex_grid_all_challs")} →</a>'
-                f'<div class="cgx-scenario"><h4>{self._t("codegeex_grid_scenario")}</h4>'
+                f'<tbody>{body}</tbody></table>'
+                + (f'<a class="cgx-more" href="{more}">{self._t("codegeex_grid_all_challs")} →</a>' if self._challs_on() else '')
+                + f'<div class="cgx-scenario"><h4>{self._t("codegeex_grid_scenario")}</h4>'
                 f'<p>"{self._t("codegeex_grid_scenario_text")}"</p>'
                 f'<small>{self._t("codegeex_grid_scenario_meta")}</small></div></section>')
 

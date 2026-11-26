@@ -21,8 +21,12 @@ class module_codegeex(GDO_Module):
         return True
 
     def gdo_dependencies(self) -> list:
-        # mira first: its install sets site config we override below
-        return ["mira", "websocket", "perf", "khedr", "icon_fa"]
+        # mira first: its install sets site config we override below.
+        # What the site itself uses: bootstrap5 (theme base), icon_fa (icons), login/register/account (Sign in/up),
+        # markdown (Lessons = README.md?render_md=1), forum (menu), zen (footer quotes), favicon.
+        # Optional, used only when enabled: mira_challs (challenges, ranking, XP).
+        return ["mira", "bootstrap5", "icon_fa", "login", "register", "account",
+                "markdown", "forum", "zen", "favicon", "websocket", "perf", "khedr"]
     def gdo_main_method_name(self) -> str:
         return 'grid'  # X 2026-11-26: "The Grid" dashboard is the front page
 

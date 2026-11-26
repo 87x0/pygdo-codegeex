@@ -24,7 +24,7 @@ class module_codegeex(GDO_Module):
         # mira first: its install sets site config we override below
         return ["mira", "mira_challs", "websocket", "perf", "khedr"]
     def gdo_main_method_name(self) -> str:
-        return 'welcome'
+        return 'grid'  # X 2026-11-26: "The Grid" dashboard is the front page
 
     def gdo_classes(self) -> list[type[GDO]]:
         return []
@@ -58,7 +58,41 @@ class module_codegeex(GDO_Module):
         self.add_css('css/cgx-theme.css')  # CodeGeeX theme "The Grid"
 
     def gdo_init_sidebar(self, page: 'GDT_Page'):
+        page._title_bar.add_field(self._cgx_topbar())
         page._left_bar.add_field(GDT_Link().href(self.href('welcome')).text('module_codegeex'))
         page._left_bar.add_field(GDT_Link().href(self.href('grid')).text('codegeex_grid_link'))
         page._left_bar.add_field(GDT_Link().href(self.href('map')).text('codegeex_map_link'))
         page._left_bar.add_field(GDT_Link().href('/gdo/codegeex/the_codegeex_almanac/README.md?render_md=1').text('codegeex_almanac'))
+
+    def _cgx_topbar(self):
+        """Top bar like X's mockup: CGX logo + game menu + the viewer's level badge."""
+        from html import escape
+        from gdo.base.util.href import href
+        from gdo.core.GDO_User import GDO_User
+        from gdo.message.GDT_HTML import GDT_HTML
+        from gdo.codegeex.GRYYX import rank_for, RANKS
+        from gdo.codegeex.method.grid import grid
+        user = GDO_User.current()
+        try:
+            xp = grid()._user_points(user) * grid.XP_PER_POINT
+        except Exception:
+            xp = 0
+        rank = rank_for(xp)[0]
+        level = [n for _, n in RANKS].index(rank)
+        ghost = user is None or not user.is_authenticated()
+        who = self.t('codegeex_grid_guest', ()) if ghost else user.get_displayname()
+        links = (
+            (self.href('grid'), 'codegeex_nav_grid'),
+            (self.href('map'), 'codegeex_nav_map'),
+            ('/gdo/codegeex/the_codegeex_almanac/README.md?render_md=1', 'codegeex_nav_almanac'),
+            (href('mira_challs', 'challenges'), 'codegeex_nav_challenges'),
+            (href('mira_challs', 'ranking'), 'codegeex_nav_ranking'),
+            (self.href('welcome'), 'codegeex_nav_about'),
+        )
+        nav = ''.join(f'<a href="{escape(u)}">{escape(self.t(k, ()))}</a>' for u, k in links)
+        html = (f'<div class="cgx-topbar"><a class="cgx-brand" href="{escape(self.href("grid"))}">'
+                f'<span class="cgx-badge">CGX</span><span class="cgx-name">CodeGeeX</span>'
+                f'<span class="cgx-div">{escape(self.t("codegeex_nav_division", ()))}</span></a>'
+                f'<nav class="cgx-nav">{nav}</nav>'
+                f'<span class="cgx-me">{escape(who)} · Lv {level} {escape(rank)}</span></div>')
+        return GDT_HTML().html(html)

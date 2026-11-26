@@ -104,7 +104,7 @@ class grid(Method):
             name = escape(str(r['chall_name']))
             link = href('mira_challs', 'challenge', positional=(r['chall_name'],))
             mark, cls = ('✓', 'done') if int(r['mine'] or 0) else ('○', '')
-            trs.append(f'<tr class="{cls}"><td>{mark} <a href="{escape(link)}">{name}</a></td>'
+            trs.append(f'<tr class="{cls}"><td>{mark}&nbsp;<a href="{escape(link)}">{name}</a></td>'
                        f'<td class="n">{int(r["chall_score"])}</td><td class="n">{int(r["solvers"] or 0)}</td></tr>')
         body = ''.join(trs) or f'<tr><td colspan="3">{self._t("codegeex_grid_no_challs")}</td></tr>'
         more = escape(href('mira_challs', 'challenges'))

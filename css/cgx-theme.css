@@ -256,7 +256,6 @@ html body .header-bar .title ul#bar-title > li { width: 100%; }
 .cgx-name { font-size: 1.2rem; }
 @media (max-width: 1100px) { .cgx-div, .cgx-me { display: none; } }
 @media (max-width: 760px) { .cgx-topbar { flex-wrap: wrap; } .cgx-nav { flex-wrap: wrap; } }
-.cgx-nav a[href*="register.form"] { background: var(--cgx-green); color: #041a0b !important; padding: 2px 10px; border-radius: 8px; font-weight: 700; }
 .cgx-div { white-space: nowrap; }
 @media (max-width: 1500px) { .cgx-div { display: none; } }
 @media (max-width: 1250px) { .cgx-me { display: none; } }
@@ -271,3 +270,6 @@ html body .footer {
 html body { padding-bottom: 48px; }
 .cgx-quote { color: var(--cgx-text); font-size: 13px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .cgx-quote span { color: var(--cgx-glow); }
+.cgx-lang { display: inline-flex; gap: 6px; margin-left: 6px; padding-left: 12px; border-left: 1px solid var(--cgx-line); }
+.cgx-lang a { color: var(--cgx-muted) !important; font-size: 13px; }
+.cgx-lang a.on { color: var(--cgx-glow) !important; font-weight: 700; }

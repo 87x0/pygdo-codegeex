@@ -101,6 +101,12 @@ class module_codegeex(GDO_Module):
         else:
             links += [(href('login', 'logout'), 'codegeex_nav_signout')]
         nav = ''.join(f'<a href="{escape(u)}">{escape(self.t(k, ()))}</a>' for u, k in links)
+        from gdo.base.Application import Application
+        cur = Application.get_lang_iso() or 'en'
+        langs = ''.join(f'<a href="?_lang={iso}" class="{"on" if iso == cur else ""}">{lbl}</a>'
+                        for iso, lbl in (('en', 'EN'), ('ar', 'ع'), ('de', 'DE')))
+        if module_enabled('codegeex') and False:  # TODO: core ignores ?_lang (index_wsgi.py parses it, never applies it); enable when fixed
+            nav += f'<span class="cgx-lang">{langs}</span>'
         html = (f'<div class="cgx-topbar"><a class="cgx-brand" href="{escape(self.href("grid"))}">'
                 f'<span class="cgx-badge">CGX</span><span class="cgx-name">CodeGeeX</span>'
                 f'<span class="cgx-div">{escape(self.t("codegeex_nav_division", ()))}</span></a>'

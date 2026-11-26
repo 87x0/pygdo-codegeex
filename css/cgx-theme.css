@@ -256,3 +256,7 @@ html body .header-bar .title ul#bar-title > li { width: 100%; }
 .cgx-name { font-size: 1.2rem; }
 @media (max-width: 1100px) { .cgx-div, .cgx-me { display: none; } }
 @media (max-width: 760px) { .cgx-topbar { flex-wrap: wrap; } .cgx-nav { flex-wrap: wrap; } }
+.cgx-nav a[href*="register.form"] { background: var(--cgx-green); color: #041a0b !important; padding: 2px 10px; border-radius: 8px; font-weight: 700; }
+.cgx-div { white-space: nowrap; }
+@media (max-width: 1500px) { .cgx-div { display: none; } }
+@media (max-width: 1250px) { .cgx-me { display: none; } }

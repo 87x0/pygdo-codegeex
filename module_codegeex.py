@@ -82,11 +82,11 @@ class module_codegeex(GDO_Module):
         ghost = user is None or not user.is_authenticated()
         who = self.t('codegeex_grid_guest', ()) if ghost else user.get_displayname()
         links = (
-            (self.href('grid'), 'codegeex_nav_grid'),
             (self.href('map'), 'codegeex_nav_map'),
             ('/gdo/codegeex/the_codegeex_almanac/README.md?render_md=1', 'codegeex_nav_almanac'),
             (href('mira_challs', 'challenges'), 'codegeex_nav_challenges'),
             (href('mira_challs', 'ranking'), 'codegeex_nav_ranking'),
+            ('/forum.forum.id.1.html', 'codegeex_nav_forum'),
             (self.href('welcome'), 'codegeex_nav_about'),
         )
         nav = ''.join(f'<a href="{escape(u)}">{escape(self.t(k, ()))}</a>' for u, k in links)

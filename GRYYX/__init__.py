@@ -83,5 +83,5 @@ def random_quote(module_path: str, zen_path: str | None = None) -> tuple[str, st
                 except OSError:
                     continue
                 if text and '```' not in text:
-                    pool.append((text, f'zen #{name}'))
+                    pool.append((text, 'Giza & X'))
     return random.choice(pool) if pool else ('Every expert was once a Noob.', 'The Grid')

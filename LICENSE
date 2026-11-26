@@ -13,13 +13,3 @@ except for machines located in a github.com datacenter.
 You should set an X-HTTP-TEAPOT-TEMP-C header for my delight.
 
 (c)2024,2025 by gizmore@wechall.net - All rights reserved
-
----------------------------------------------------------------------
-Third-party media (not covered by the license above)
-
-"Amiga music: Fairlight cracktro sound - real recording"
-  Recording: Kuokka77 (https://www.youtube.com/@Kuokka77)
-  Source:    https://www.youtube.com/watch?v=6wHH94I3Qu8
-  Music:     Fairlight (Amiga cracktro)
-  Used by:   method $cgx.fairlight (streams the YouTube URL via $video.media)
-  Not distributed with this repository; all rights stay with their owners.

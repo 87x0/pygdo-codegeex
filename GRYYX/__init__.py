@@ -60,3 +60,28 @@ def realms(module_path: str) -> list[dict]:
             'has_index': os.path.isfile(os.path.join(full, 'README.md')),
         })
     return out
+
+
+def random_quote(module_path: str, zen_path: str | None = None) -> tuple[str, str]:
+    """A random (text, source): our own list in GRYYX/quotes.txt, plus short scrolls of gizmore's zen book."""
+    import random
+    pool = []
+    try:
+        with open(os.path.join(module_path, 'GRYYX', 'quotes.txt'), encoding='utf-8') as f:
+            for line in f:
+                if '|' in line:
+                    text, src = line.strip().split('|', 1)
+                    pool.append((text, src))
+    except OSError:
+        pass
+    if zen_path and os.path.isdir(zen_path):
+        for name in os.listdir(zen_path):
+            p = os.path.join(zen_path, name)
+            if name.isdigit() and os.path.isfile(p) and os.path.getsize(p) <= 160:
+                try:
+                    text = ' '.join(open(p, encoding='utf-8').read().split())
+                except OSError:
+                    continue
+                if text and '```' not in text:
+                    pool.append((text, f'zen #{name}'))
+    return random.choice(pool) if pool else ('Every expert was once a Noob.', 'The Grid')

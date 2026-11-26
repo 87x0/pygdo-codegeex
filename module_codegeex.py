@@ -59,6 +59,7 @@ class module_codegeex(GDO_Module):
 
     def gdo_init_sidebar(self, page: 'GDT_Page'):
         page._title_bar.add_field(self._cgx_topbar())
+        page._bottom_bar.add_field(self._cgx_quote())
         page._left_bar.add_field(GDT_Link().href(self.href('welcome')).text('module_codegeex'))
         page._left_bar.add_field(GDT_Link().href(self.href('grid')).text('codegeex_grid_link'))
         page._left_bar.add_field(GDT_Link().href(self.href('map')).text('codegeex_map_link'))
@@ -101,3 +102,12 @@ class module_codegeex(GDO_Module):
                 f'<nav class="cgx-nav">{nav}</nav>'
                 f'<span class="cgx-me">{escape(who)} · Lv {level} {escape(rank)}</span></div>')
         return GDT_HTML().html(html)
+
+    def _cgx_quote(self):
+        """Fixed footer: a random quote on every page load (X 2026-11-26)."""
+        from html import escape
+        from gdo.message.GDT_HTML import GDT_HTML
+        from gdo.codegeex.GRYYX import random_quote
+        from gdo.base.Application import Application
+        text, src = random_quote(self.file_path(''), Application.file_path('gdo/zen/anonymous-zen-book'))
+        return GDT_HTML().html(f'<div class="cgx-quote">“{escape(text)}” <span>— {escape(src)}</span></div>')

@@ -260,3 +260,14 @@ html body .header-bar .title ul#bar-title > li { width: 100%; }
 .cgx-div { white-space: nowrap; }
 @media (max-width: 1500px) { .cgx-div { display: none; } }
 @media (max-width: 1250px) { .cgx-me { display: none; } }
+
+/* ---- fixed header + fixed quote footer (X 2026-11-26) ---- */
+html body .header-bar { position: sticky; top: 0; z-index: 40; }
+html body .footer {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 40;
+  background: rgba(13,20,13,.96); border-top: 1px solid var(--cgx-line);
+  padding: 8px 16px; backdrop-filter: blur(4px);
+}
+html body { padding-bottom: 48px; }
+.cgx-quote { color: var(--cgx-text); font-size: 13px; text-align: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.cgx-quote span { color: var(--cgx-glow); }

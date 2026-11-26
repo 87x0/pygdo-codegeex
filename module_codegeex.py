@@ -73,6 +73,7 @@ class module_codegeex(GDO_Module):
         from gdo.message.GDT_HTML import GDT_HTML
         from gdo.codegeex.GRYYX import rank_for, RANKS
         from gdo.codegeex.method.grid import grid
+        from gdo.base.Util import module_enabled
         user = GDO_User.current()
         try:
             xp = grid()._user_points(user) * grid.XP_PER_POINT
@@ -86,8 +87,8 @@ class module_codegeex(GDO_Module):
             (self.href('grid'), 'codegeex_nav_home'),
             (self.href('map'), 'codegeex_nav_map'),
             ('/gdo/codegeex/the_codegeex_almanac/README.md?render_md=1', 'codegeex_nav_almanac'),
-            (href('mira_challs', 'challenges'), 'codegeex_nav_challenges'),
-            (href('mira_challs', 'ranking'), 'codegeex_nav_ranking'),
+            *(((href('mira_challs', 'challenges'), 'codegeex_nav_challenges'),
+               (href('mira_challs', 'ranking'), 'codegeex_nav_ranking')) if module_enabled('mira_challs') else ()),
             ('/forum.forum.id.1.html', 'codegeex_nav_forum'),
             (self.href('welcome'), 'codegeex_nav_about'),
         ]

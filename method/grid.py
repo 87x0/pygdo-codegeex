@@ -27,7 +27,14 @@ class grid(Method):
             out.append(row)
         return out
 
+    @staticmethod
+    def _challs_on() -> bool:
+        from gdo.base.Util import module_enabled
+        return module_enabled('mira_challs')
+
     def _user_points(self, user) -> int:
+        if not self._challs_on():
+            return 0
         from gdo.mira_challs.GDO_Challenge import GDO_Challenge
         if user is None or not user.get_id():
             return 0
@@ -38,6 +45,8 @@ class grid(Method):
         return int(rows[0]['pts'] or 0) if rows else 0
 
     def _challenges(self, user) -> list[dict]:
+        if not self._challs_on():
+            return []
         from gdo.mira_challs.GDO_Challenge import GDO_Challenge
         uid = int(user.get_id()) if user is not None and user.get_id() else 0
         q = (GDO_Challenge.table()
@@ -50,6 +59,8 @@ class grid(Method):
         return self._rows(q)
 
     def _ranking(self) -> list[dict]:
+        if not self._challs_on():
+            return []
         from gdo.core.GDO_User import GDO_User
         q = (GDO_User.table().select('gdo_user.user_id, gdo_user.user_name, gdo_user.user_displayname')
              .select('(SELECT COALESCE(SUM(c.chall_score), 0) FROM gdo_challengesolved s '
@@ -107,7 +118,7 @@ class grid(Method):
             trs.append(f'<tr class="{cls}"><td>{mark}&nbsp;<a href="{escape(link)}">{name}</a></td>'
                        f'<td class="n">{int(r["chall_score"])}</td><td class="n">{int(r["solvers"] or 0)}</td></tr>')
         body = ''.join(trs) or f'<tr><td colspan="3">{self._t("codegeex_grid_no_challs")}</td></tr>'
-        more = escape(href('mira_challs', 'challenges'))
+        more = escape(href('mira_challs', 'challenges')) if self._challs_on() else '#'
         return (f'<section class="cgx-box"><h3>{self._t("codegeex_grid_challenges")}</h3>'
                 f'<table class="cgx-table"><thead><tr><th>{self._t("codegeex_grid_col_chall")}</th>'
                 f'<th class="n">{self._t("codegeex_grid_col_score")}</th><th class="n">{self._t("codegeex_grid_col_solvers")}</th></tr></thead>'

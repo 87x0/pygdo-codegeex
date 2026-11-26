@@ -1,4 +1,5 @@
 module_codegeex = "CodeGeeX"
+keywords = "CodeGeeX,WeChall,Hacking,Hackit,Challenge,Agents,AI,PyGDO"
 
 mt_codegeex_welcome = "CodeGeeX - For You!"
 md_codegeex_welcome = "CodeGeeX: free online learning material for IT, coding and hacking. Watch, read, try, solve."

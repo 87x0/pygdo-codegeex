@@ -22,7 +22,7 @@ class module_codegeex(GDO_Module):
 
     def gdo_dependencies(self) -> list:
         # mira first: its install sets site config we override below
-        return ["mira", "mira_challs", "websocket", "perf", "khedr"]
+        return ["mira", "mira_challs", "websocket", "perf", "khedr", "icon_fa"]
     def gdo_main_method_name(self) -> str:
         return 'grid'  # X 2026-11-26: "The Grid" dashboard is the front page
 

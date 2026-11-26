@@ -24,15 +24,15 @@ class module_codegeex_Test(GDOTestCase):
         reinstall_module('codegeex')
         self.assertIs(type(module_codegeex.instance()), module_codegeex, "Cannot re-install module codegeex.")
 
-    def test_03_overview_cli(self):
+    def test_03_welcome_cli(self):
         giz =  cli_gizmore()
-        out = cli_plug(giz, "$codegeex.overview")
-        self.assertIsNotNone(out, '$codegeex.overview does not work.')
+        out = cli_plug(giz, "$codegeex.welcome")
+        self.assertIsNotNone(out, '$codegeex.welcome does not work.')
 
-    def test_02_overview_web(self):
+    def test_02_welcome_web(self):
         giz =  cli_gizmore()
-        out = web_plug("codegeex.overview.html")
-        self.assertIsNotNone(out, 'codegeex.overview.html does not work.')
+        out = web_plug("codegeex.welcome.html")
+        self.assertIsNotNone(out, 'codegeex.welcome.html does not work.')
 
 
 if __name__ == '__main__':

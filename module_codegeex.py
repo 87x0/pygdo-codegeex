@@ -55,6 +55,7 @@ class module_codegeex(GDO_Module):
     def gdo_load_scripts(self, page: 'GDT_Page'):
         self.add_js('js/pygdo-codegeex.js')
         self.add_css('css/pygdo-codegeex.css')
+        self.add_css('css/cgx-theme.css')  # CodeGeeX theme "The Grid"
 
     def gdo_init_sidebar(self, page: 'GDT_Page'):
         page._left_bar.add_field(GDT_Link().href(self.href('welcome')).text('module_codegeex'))

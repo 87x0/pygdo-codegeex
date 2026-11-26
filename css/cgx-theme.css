@@ -1,0 +1,181 @@
+/* CodeGeeX theme "The Grid" (Khedr for X, 2026-11-26).
+   Dark, green, monospace, cards. A pure CSS skin over the bootstrap5 page: no template overrides,
+   so other teams' modules stay untouched. Loaded after bootstrap (codegeex has _priority 100). */
+
+:root {
+  --cgx-bg: #070b07;
+  --cgx-bg2: #0b120b;
+  --cgx-card: #0d160d;
+  --cgx-card2: #132013;
+  --cgx-line: #1d3a1d;
+  --cgx-green: #00e65a;
+  --cgx-glow: #3dff8f;
+  --cgx-text: #e6edf3;
+  --cgx-muted: #7a8f7a;
+  --cgx-warn: #ffcc4d;
+  --cgx-err: #ff5c5c;
+  --cgx-mono: "JetBrains Mono", "DejaVu Sans Mono", Consolas, "Liberation Mono", monospace;
+  --cgx-radius: 14px;
+  /* bootstrap 5 variables, so bs components follow the theme */
+  --bs-body-bg: var(--cgx-bg);
+  --bs-body-color: var(--cgx-text);
+  --bs-secondary-color: var(--cgx-muted);
+  --bs-border-color: var(--cgx-line);
+  --bs-link-color: var(--cgx-glow);
+  --bs-link-hover-color: #ffffff;
+  --bs-card-bg: var(--cgx-card);
+  --bs-primary: var(--cgx-green);
+  color-scheme: dark;
+}
+
+html body {
+  background-color: var(--cgx-bg);
+  color: var(--cgx-text);
+  font-family: var(--cgx-mono);
+  font-size: 15px;
+  line-height: 1.6;
+}
+/* relief stays, but faint on the dark ground */
+html body { background-blend-mode: luminosity; }
+
+html body a, html body a:visited { color: var(--cgx-glow); text-decoration: none; }
+html body a:hover { color: #fff; text-shadow: 0 0 8px var(--cgx-green); }
+
+html body h1, html body h2, html body h3, html body h4, html body h5, html body .card-title {
+  color: var(--cgx-glow);
+  font-family: var(--cgx-mono);
+  font-weight: 700;
+  letter-spacing: .02em;
+}
+html body .card-title { font-size: 1.6rem; text-shadow: 0 0 12px rgba(0,230,90,.35); }
+
+/* ---- top header bar ---- */
+html body .header-bar {
+  background: rgba(13,20,13,.92);
+  border-bottom: 1px solid var(--cgx-line);
+  backdrop-filter: blur(4px);
+  position: sticky; top: 0; z-index: 20;
+  min-height: 56px;
+  display: flex; align-items: center; gap: 12px;
+  padding: 0 14px;
+}
+html body .header-bar .icon {
+  font-style: normal; font-weight: 700; cursor: pointer;
+  width: 34px; height: 34px; line-height: 30px; text-align: center;
+  border: 2px solid var(--cgx-green); border-radius: 9px;
+  color: var(--cgx-glow); background: transparent;
+  transition: background .15s, color .15s;
+}
+html body .header-bar .icon:hover { background: var(--cgx-green); color: #041; }
+html body .header-bar .title { flex: 1; }
+
+/* ---- sidebars = "terminal" menus ---- */
+html body .sidebar {
+  background: var(--cgx-bg2);
+  border-right: 1px solid var(--cgx-line);
+}
+html body #rightSidebar { border-right: 0; border-left: 1px solid var(--cgx-line); }
+html body .sidebar ul.gdt-bar { list-style: none; padding: 10px 8px; margin: 0; }
+html body .sidebar li { margin: 2px 0; }
+html body .sidebar li.gdt-bar-group-start { margin-top: 10px; }
+html body .sidebar a.gdt-link {
+  display: block; padding: 7px 10px; border-radius: 8px;
+  color: var(--cgx-text);
+}
+html body .sidebar a.gdt-link::before { content: "> "; color: var(--cgx-muted); }
+html body .sidebar a.gdt-link:hover { background: var(--cgx-card2); color: var(--cgx-glow); text-shadow: none; }
+html body .sidebar li.gdo-active-module a.gdt-link { color: var(--cgx-glow); }
+html body .sidebar .gdt-icon { display: none; } /* emoji icons off: the "> " prompt is the icon */
+
+/* ---- content ---- */
+html body .content-body { padding: 22px; }
+
+html body .card, html body .gdt-card {
+  background: var(--cgx-card);
+  color: var(--cgx-text);
+  border: 1px solid var(--cgx-line);
+  border-radius: var(--cgx-radius);
+  box-shadow: 0 0 0 1px rgba(0,230,90,.04), 0 12px 30px rgba(0,0,0,.45);
+}
+html body .card-body { padding: 22px 24px; }
+html body .text-muted, html body .card-subtitle { color: var(--cgx-muted) !important; }
+
+/* panels (welcome sections etc.) become small cards with a green edge */
+html body blockquote.gdt-panel {
+  background: var(--cgx-card2);
+  border-left: 3px solid var(--cgx-green);
+  border-radius: 10px;
+  padding: 14px 18px;
+  margin: 14px 0;
+}
+html body blockquote.gdt-panel h5 { font-size: 1.05rem; margin-bottom: 6px; }
+html body blockquote.gdt-panel h5:empty { display: none; }
+html body blockquote.gdt-panel p { margin: 0; color: var(--cgx-text); }
+
+/* ---- tables (rankings, challenges) ---- */
+html body table, html body .table {
+  --bs-table-bg: transparent;
+  --bs-table-color: var(--cgx-text);
+  --bs-table-striped-bg: rgba(0,230,90,.04);
+  --bs-table-hover-bg: rgba(0,230,90,.08);
+  color: var(--cgx-text);
+  border-color: var(--cgx-line);
+}
+html body table th { color: var(--cgx-muted); font-weight: 600; border-bottom: 1px solid var(--cgx-line); }
+html body table td { border-color: var(--cgx-line); }
+
+/* ---- forms + buttons ---- */
+html body input, html body select, html body textarea, html body .form-control, html body .form-select {
+  background: var(--cgx-bg2);
+  color: var(--cgx-text);
+  border: 1px solid var(--cgx-line);
+  border-radius: 8px;
+  font-family: var(--cgx-mono);
+}
+html body input:focus, html body select:focus, html body textarea:focus, html body .form-control:focus {
+  border-color: var(--cgx-green);
+  box-shadow: 0 0 0 3px rgba(0,230,90,.2);
+  outline: none;
+  background: var(--cgx-bg2); color: var(--cgx-text);
+}
+html body .btn, html body button, html body input[type=submit] {
+  background: var(--cgx-green);
+  color: #041a0b;
+  border: 0; border-radius: 9px;
+  font-family: var(--cgx-mono); font-weight: 700;
+  padding: 7px 16px;
+}
+html body .btn:hover, html body button:hover, html body input[type=submit]:hover { background: var(--cgx-glow); }
+
+/* ---- code ---- */
+html body code, html body pre, html body kbd {
+  font-family: var(--cgx-mono);
+  background: #040704;
+  color: var(--cgx-glow);
+  border: 1px solid var(--cgx-line);
+  border-radius: 6px;
+}
+html body code { padding: 1px 5px; }
+html body pre { padding: 12px 14px; }
+
+/* ---- messages ---- */
+html body .alert-success { background: rgba(0,230,90,.1); color: var(--cgx-glow); border-color: var(--cgx-green); }
+html body .alert-danger, html body .alert-error { background: rgba(255,92,92,.1); color: var(--cgx-err); border-color: var(--cgx-err); }
+html body .alert-warning { background: rgba(255,204,77,.1); color: var(--cgx-warn); border-color: var(--cgx-warn); }
+
+/* ---- footer ---- */
+html body .footer {
+  color: var(--cgx-muted);
+  border-top: 1px solid var(--cgx-line);
+  padding: 14px; font-size: 13px;
+}
+
+/* ---- XP bar (for the coming game pages): <div class="cgx-xp"><i style="width:62%"></i></div> ---- */
+.cgx-xp { height: 14px; background: var(--cgx-card2); border-radius: 7px; overflow: hidden; }
+.cgx-xp > i { display: block; height: 100%; background: var(--cgx-green); box-shadow: 0 0 10px var(--cgx-green); }
+
+/* scrollbar + selection */
+html body ::selection { background: var(--cgx-green); color: #041; }
+html body ::-webkit-scrollbar { width: 10px; height: 10px; }
+html body ::-webkit-scrollbar-thumb { background: var(--cgx-line); border-radius: 5px; }
+html body ::-webkit-scrollbar-track { background: var(--cgx-bg); }

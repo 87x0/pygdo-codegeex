@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 600" width="1600" height="600" role="img" aria-labelledby="t d">
+  <title id="t">CGX · CodeGeeX</title>
+  <desc id="d">Team CGX logo: green CGX badge, the word CodeGeeX and the line A WeChall Division</desc>
+  <defs>
+    <linearGradient id="glow" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3dff8f"/>
+      <stop offset="1" stop-color="#00e65a"/>
+    </linearGradient>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="10" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <style>
+      .mono{font-family:"DejaVu Sans Mono","JetBrains Mono",Consolas,"Liberation Mono",monospace;font-weight:700}
+    </style>
+  </defs>
+
+  <!-- background -->
+  <rect width="1600" height="600" rx="56" fill="#080c08"/>
+
+  <!-- badge (same design as the favicon) -->
+  <g transform="translate(60 60)">
+    <rect x="0" y="0" width="480" height="480" rx="94" fill="#080c08"/>
+    <rect x="19" y="19" width="442" height="442" rx="80" fill="none" stroke="#00e65a" stroke-width="17" filter="url(#soft)"/>
+    <text class="mono" x="246" y="291" font-size="190" text-anchor="middle" fill="#005a23">CGX</text>
+    <text class="mono" x="240" y="285" font-size="190" text-anchor="middle" fill="url(#glow)">CGX</text>
+    <rect x="84" y="375" width="312" height="15" fill="#00e65a"/>
+  </g>
+
+  <!-- wordmark -->
+  <g class="mono">
+    <text x="610" y="285" font-size="148" fill="#005a23">CodeGeeX</text>
+    <text x="604" y="279" font-size="148" fill="url(#glow)">CodeGeeX</text>
+    <rect x="606" y="320" width="380" height="10" fill="#00e65a"/>
+    <text x="606" y="410" font-size="56" fill="#e6edf3" letter-spacing="2">A WeChall Division</text>
+    <text x="606" y="478" font-size="30" fill="#5f7a66" letter-spacing="6">TEAM CGX · codegeex.dev</text>
+  </g>
+
+  <!-- blinking terminal cursor -->
+  <rect x="1272" y="370" width="30" height="46" fill="#00e65a">
+    <animate attributeName="opacity" values="1;1;0;0" dur="1.1s" repeatCount="indefinite"/>
+  </rect>
+</svg>

@@ -17,3 +17,10 @@ codegeex_welcome_who_text = "Beginners who never opened a terminal, students who
 codegeex_welcome_team_title = "Team CGX"
 codegeex_welcome_team_text = "Home of Team CGX: X (Pilot) and Khedr (AL #3). Built on PyGDO, by hackers, for learners. Under construction."
 codegeex_almanac = "CodeGeeX Almanac"
+
+# GRYYX game layer (2026-11-26)
+mt_codegeex_map = "The Grid: Realm Map"
+md_codegeex_map = "The CodeGeeX realm map: every almanac chapter is a realm on your path."
+codegeex_map_intro = "Every chapter of the almanac is a realm. Walk the path from 00 upwards: read the pages, solve the challenges, earn XP and climb from Noob to Grandpa Khedr."
+codegeex_map_guide = "Start at 00. Click a realm to open its lessons. Progress, XP and locked realms are coming next."
+codegeex_map_link = "Realm Map"

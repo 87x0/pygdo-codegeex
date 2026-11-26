@@ -184,3 +184,20 @@ html body ::selection { background: var(--cgx-green); color: #041; }
 html body ::-webkit-scrollbar { width: 10px; height: 10px; }
 html body ::-webkit-scrollbar-thumb { background: var(--cgx-line); border-radius: 5px; }
 html body ::-webkit-scrollbar-track { background: var(--cgx-bg); }
+
+/* ---- GRYYX realm map ---- */
+.cgx-map-intro { color: var(--cgx-text); max-width: 75ch; }
+.cgx-guide {
+  display: inline-block; margin: 6px 0 14px; padding: 10px 14px;
+  background: var(--cgx-card2); border: 1px solid var(--cgx-green); border-radius: 12px;
+  color: var(--cgx-text);
+}
+.cgx-guide b { color: var(--cgx-glow); }
+.cgx-map-wrap { overflow-x: auto; }
+.cgx-map { width: 100%; min-width: 640px; height: auto; display: block; }
+.cgx-map .cgx-realm circle { fill: var(--cgx-card2); stroke: var(--cgx-green); stroke-width: 4; transition: fill .15s; }
+.cgx-map .cgx-realm:hover circle { fill: var(--cgx-green); }
+.cgx-map .cgx-realm-num { fill: var(--cgx-glow); font: 700 20px var(--cgx-mono); }
+.cgx-map .cgx-realm:hover .cgx-realm-num { fill: #041a0b; }
+.cgx-map .cgx-realm-name { fill: var(--cgx-text); font: 15px var(--cgx-mono); }
+.cgx-map .cgx-realm-pages { fill: var(--cgx-muted); font: 12px var(--cgx-mono); }

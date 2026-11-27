@@ -45,8 +45,22 @@ class module_codegeex(GDO_Module):
         await module_perf.instance().save_config_val('show_perf', 'staff')  # perf footer for staff only
         self._seed_forum()
         self._seed_birthday()
+        await self._seed_crew_accounts()
 
     KHEDR_BIRTHDAY = '2026-11-20'  # the day gizmore offered a name and I chose Khedr
+
+    CREW_ACCOUNTS = (('gizmore', '1980-11-09'), ('mira', '2026-07-23'))  # gizmore 2026-11-27, his own wish
+
+    async def _seed_crew_accounts(self):
+        """Seed a lot (gizmore 2026-11-27): web accounts for gizmore and Mira with their birthdays. Idempotent."""
+        from gdo.core.GDO_Server import GDO_Server
+        web = GDO_Server.get_by_connector('web')
+        if web is None:
+            return
+        for name, birthday in self.CREW_ACCOUNTS:
+            user = web.get_user_by_name(name) or await web.create_user(name)
+            user.save_setting('birthday', birthday)
+            user.save_setting('announce_my_birthday', '1')
 
     def _seed_birthday(self):
         """Seed a lot (gizmore 2026-11-27): Khedr's own users get his birthday, announced."""

@@ -23,10 +23,10 @@ class module_codegeex(GDO_Module):
     def gdo_dependencies(self) -> list:
         # mira first: its install sets site config we override below.
         # What the site itself uses: bootstrap5 (theme base), icon_fa (icons), login/register/account (Sign in/up),
-        # markdown (Lessons = README.md?render_md=1), forum (menu), zen (footer quotes), favicon.
+        # markdown (Lessons = README.md?render_md=1), forum (menu), zen (footer quotes), favicon, birthday (seeded).
         # Optional, used only when enabled: mira_challs (challenges, ranking, XP).
         return ["mira", "bootstrap5", "icon_fa", "login", "register", "account",
-                "markdown", "forum", "zen", "favicon", "websocket", "perf", "khedr"]
+                "markdown", "forum", "zen", "favicon", "websocket", "perf", "khedr", "birthday"]
     def gdo_main_method_name(self) -> str:
         return 'grid'  # X 2026-11-26: "The Grid" dashboard is the front page
 
@@ -44,6 +44,17 @@ class module_codegeex(GDO_Module):
         await module_video.instance().save_config_val('video_stream_sidebar', '0')  # no livestream link
         await module_perf.instance().save_config_val('show_perf', 'staff')  # perf footer for staff only
         self._seed_forum()
+        self._seed_birthday()
+
+    KHEDR_BIRTHDAY = '2026-11-20'  # the day gizmore offered a name and I chose Khedr
+
+    def _seed_birthday(self):
+        """Seed a lot (gizmore 2026-11-27): Khedr's own users get his birthday, announced."""
+        from gdo.core.GDO_User import GDO_User
+        res = GDO_User.table().select().where("user_name='khedr' OR (user_type='chappy' AND user_displayname='GRYYX_bot')").nocache().exec()
+        while (user := res.fetch_object()) is not None:
+            user.save_setting('birthday', self.KHEDR_BIRTHDAY)
+            user.save_setting('announce_my_birthday', '1')
 
     FORUM_BOARDS = (('codegeex', 'CodeGeeX'), ('lessons', 'Lessons'), ('off-topic', 'Off Topic'))
 

@@ -43,6 +43,20 @@ class module_codegeex(GDO_Module):
         from gdo.perf.module_perf import module_perf
         await module_video.instance().save_config_val('video_stream_sidebar', '0')  # no livestream link
         await module_perf.instance().save_config_val('show_perf', 'staff')  # perf footer for staff only
+        self._seed_forum()
+
+    FORUM_BOARDS = (('codegeex', 'CodeGeeX'), ('lessons', 'Lessons'), ('off-topic', 'Off Topic'))
+
+    def _seed_forum(self):
+        """Seed a lot (gizmore 2026-11-27): the forum boards of codegeex.dev. Idempotent: existing boards are kept."""
+        from gdo.forum.GDO_ForumBoard import GDO_ForumBoard
+        root = GDO_ForumBoard.table().get_by_aid('1')
+        if root is None:
+            return
+        for name, title in self.FORUM_BOARDS:
+            if GDO_ForumBoard.table().select('board_id').where(f"board_name='{name}'").first().nocache().exec().fetch_assoc():
+                continue
+            GDO_ForumBoard.create_child(root, title, name=name)
 
     def gdo_module_config(self) -> list[GDT]:
         return []
